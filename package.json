@@ -1,0 +1,70 @@
+{
+  "name": "inspector-adonisjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/providers/InspectorProvider.js",
+  "scripts": {
+    "mrm": "mrm --preset=@adonisjs/mrm-preset",
+    "pretest": "npm run lint",
+    "test": "node -r @adonisjs/require-ts/build/register bin/test.ts",
+    "clean": "del-cli build",
+    "compile": "npm run lint && npm run clean && tsc",
+    "build": "npm run compile",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inspector-apm/inspector-adonisjs.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inspector-apm/inspector-adonisjs/issues"
+  },
+  "homepage": "https://github.com/inspector-apm/inspector-adonisjs#readme",
+  "peerDependencies": {
+    "@adonisjs/core": "^5.1.0",
+    "@adonisjs/session": "^6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@adonisjs/session": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@adonisjs/core": "^5.1.0",
+    "@adonisjs/mrm-preset": "^5.0.3",
+    "@adonisjs/require-ts": "^2.0.13",
+    "@adonisjs/session": "^6.0.0",
+    "@types/node": "^20.3.2",
+    "del-cli": "^5.0.0",
+    "mrm": "^4.1.14",
+    "typescript": "^5.1.3"
+  },
+  "mrmConfig": {
+    "core": false,
+    "license": "MIT",
+    "services": [],
+    "minNodeVersion": "16.13.1",
+    "probotApps": []
+  },
+  "files": [
+    "build/src",
+    "build/index.d.ts",
+    "build/index.js"
+  ],
+  "dependencies": {
+    "@inspector-apm/inspector-nodejs": "^1.9.10"
+  },
+  "adonisjs": {
+    "types": "@inspector-apm/inspector-adonisjs",
+    "providers": [
+      "@inspector-apm/inspector-adonisjs"
+    ],
+    "templates": {
+      "config": [
+        "inspector.txt"
+      ]
+    }
+  }
+}

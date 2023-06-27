@@ -1,0 +1,9 @@
+import { InspectorConfig } from "@ioc:Inspector/Adonisjs"
+
+export const inspectorConfig: InspectorConfig = {
+  ingestionKey: null,
+
+  excludeUrls: [],
+
+  hideParameters: []
+}
