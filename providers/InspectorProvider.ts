@@ -6,15 +6,17 @@ export default class InspectorProvider {
     constructor(protected app: ApplicationContract) {}
 
     public register() {
-        this.app.container.singleton('Inspector', () => {
+        this.app.container.singleton('Adonis/Addons/Inspector', () => {
             const config = this.app.container.resolveBinding('Adonis/Core/Config').get('inspector.inspectorConfig')
 
-            return require('@inspector-apm/inspector-nodejs')({
-                ingestionKey: config.ingestionKey
-            })
+            return {
+                ...require('@inspector-apm/inspector-nodejs')({
+                    ingestionKey: config.ingestionKey
+                })
+            }
         })
 
-        this.app.container.singleton('Inspector/Middleware', () => {
+        this.app.container.singleton('Adonis/Addons/Inspector/Middleware', () => {
             return require('../src/Middleware/InspectorMiddleware')
         })
     }

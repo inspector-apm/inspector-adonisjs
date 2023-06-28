@@ -1,7 +1,8 @@
-import { InspectorConfig } from "@ioc:Inspector/Adonisjs"
+import Env from '@ioc:Adonis/Core/Env'
+import { InspectorConfig } from "@ioc:Adonis/Addons/Inspector"
 
 export const inspectorConfig: InspectorConfig = {
-  ingestionKey: null,
+  ingestionKey: ENV.get('INSPECTOR_INGESTION_KEY'),
 
   excludeUrls: [],
 
