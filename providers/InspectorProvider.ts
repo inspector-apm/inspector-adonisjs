@@ -8,12 +8,7 @@ export default class InspectorProvider {
 
     public register() {
         this.app.container.singleton('Adonis/Addons/Inspector', () => {
-            const config = this.app.container.resolveBinding('Adonis/Core/Config').get('inspector.inspectorConfig')
-
-            // todo: add other configuration parameters
-            return new Inspector({
-                ingestionKey: config.ingestionKey
-            })
+            return { ...Inspector }
         })
 
         this.app.container.singleton('Adonis/Addons/Inspector/Middleware', () => {
@@ -22,7 +17,12 @@ export default class InspectorProvider {
         })
     }
 
-    public boot() {
+    public boot(Inspector) {
+        const config = this.app.container.resolveBinding('Adonis/Core/Config').get('inspector.inspectorConfig')
 
+        // todo: add other configuration parameters
+        Inspector.constructor({
+            ingestionKey: config.ingestionKey
+        })
     }
 }

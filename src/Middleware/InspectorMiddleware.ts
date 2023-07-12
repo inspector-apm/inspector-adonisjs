@@ -1,11 +1,11 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Inspector from "@ioc:Adonis/Addons/Inspector";
 import {inject} from "@adonisjs/fold";
 import {ApplicationContract} from "@ioc:Adonis/Core/Application";
 
 @inject('Adonis/Core/Application')
 export default class InspectorMiddleware {
     private config = this.app.container.resolveBinding('Adonis/Core/Config').get('inspector.inspectorConfig')
-    private inspector = this.app.container.resolveBinding('Adonis/Addons/Inspector')
 
     constructor(protected app: ApplicationContract) {}
 
@@ -16,7 +16,7 @@ export default class InspectorMiddleware {
             return;
         }
 
-        let transaction = this.inspector.startTransaction(request.method() + ' ' + request.url())
+        let transaction = Inspector.startTransaction(request.method() + ' ' + request.url())
 
         transaction.addContext('Url', {
             protocol: request.protocol(),
@@ -43,6 +43,6 @@ export default class InspectorMiddleware {
 
         transaction.setResult(response.getStatus())
 
-        this.inspector.flush()
+        Inspector.flush()
     }
 }
