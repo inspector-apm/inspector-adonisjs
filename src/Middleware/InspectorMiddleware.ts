@@ -1,11 +1,11 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Inspector from "@ioc:Adonis/Addons/Inspector";
 import {inject} from "@adonisjs/fold";
 import {ApplicationContract} from "@ioc:Adonis/Core/Application";
 
 @inject('Adonis/Core/Application')
 export default class InspectorMiddleware {
     private config = this.app.container.resolveBinding('Adonis/Core/Config').get('inspector.inspectorConfig')
+    private Inspector = this.app.container.resolveBinding('Adonis/Addons/Inspector')
 
     constructor(protected app: ApplicationContract) {}
 
