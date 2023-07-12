@@ -1,6 +1,6 @@
 {
   "name": "@inspector-apm/inspector-adonisjs",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "Code Execution Monitoring for Adonisjs applications.",
   "main": "build/index.js",
   "scripts": {

@@ -21,7 +21,7 @@ export default class InspectorProvider {
         const config = this.app.container.resolveBinding('Adonis/Core/Config').get('inspector.inspectorConfig')
 
         // todo: add other configuration parameters
-        Inspector.constructor({
+        Inspector({
             ingestionKey: config.ingestionKey
         })
     }
