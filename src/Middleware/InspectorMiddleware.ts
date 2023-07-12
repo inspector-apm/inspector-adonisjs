@@ -5,7 +5,7 @@ import {ApplicationContract} from "@ioc:Adonis/Core/Application";
 @inject('Adonis/Core/Application')
 export default class InspectorMiddleware {
     private config = this.app.container.resolveBinding('Adonis/Core/Config').get('inspector.inspectorConfig')
-    private Inspector = this.app.container.resolveBinding('Adonis/Addons/Inspector')
+    private inspector = this.app.container.resolveBinding('Adonis/Addons/Inspector')
 
     constructor(protected app: ApplicationContract) {}
 
@@ -16,7 +16,7 @@ export default class InspectorMiddleware {
             return;
         }
 
-        let transaction = Inspector.startTransaction(request.method() + ' ' + request.url())
+        let transaction = this.inspector.startTransaction(request.method() + ' ' + request.url())
 
         transaction.addContext('Url', {
             protocol: request.protocol(),
@@ -43,6 +43,6 @@ export default class InspectorMiddleware {
 
         transaction.setResult(response.getStatus())
 
-        Inspector.flush()
+        this.inspector.flush()
     }
 }
