@@ -15,7 +15,7 @@ as first entry inside the `start/kernel.ts` file:
 
 ```ts
 Server.middleware.register([
-    () => import('@ioc:Adonis/Addons/Inspector/Middleware'),
+    () => import('@ioc:Adonis/Addons/InspectorMiddleware'),
     ...,
 ])
 ```

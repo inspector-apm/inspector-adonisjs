@@ -1,4 +1,4 @@
-declare module '@ioc:Adonis/Addons/Inspector/Middleware' {
+declare module '@ioc:Adonis/Addons/InspectorMiddleware' {
     import {ApplicationContract} from "@ioc:Adonis/Core/Application";
     import {HttpContextContract} from "@ioc:Adonis/Core/HttpContext";
 
