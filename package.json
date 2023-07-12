@@ -66,6 +66,9 @@
   "dependencies": {
     "@inspector-apm/inspector-nodejs": "^1.9.10"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "adonisjs": {
     "instructionsMd": "./build/instructions.md",
     "types": "@inspector-apm/inspector-adonisjs",
