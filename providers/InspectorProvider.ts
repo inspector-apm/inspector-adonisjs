@@ -19,7 +19,8 @@ export default class InspectorProvider {
         this.app.container.alias('Adonis/Addons/Inspector', 'Inspector')
 
         this.app.container.singleton('Adonis/Addons/Inspector/Middleware', () => {
-            return require('../src/Middleware/InspectorMiddleware')
+            const {InspectorMiddleware} = require('../src/Middleware/InspectorMiddleware')
+            return InspectorMiddleware
         })
     }
 
