@@ -15,10 +15,10 @@ export default class InspectorProvider {
             })
         })
 
-        /*this.app.container.singleton('Adonis/Addons/InspectorMiddleware', () => {
+        this.app.container.bind('Adonis/Addons/InspectorMiddleware', () => {
             const {InspectorMiddleware} = require('../src/Middleware/InspectorMiddleware')
             return InspectorMiddleware
-        })*/
+        })
     }
 
     public boot() {
