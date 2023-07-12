@@ -1,8 +1,8 @@
 {
   "name": "@inspector-apm/inspector-adonisjs",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Code Execution Monitoring for Adonisjs applications.",
-  "main": "build/providers/InspectorProvider.js",
+  "main": "build/index.js",
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "pretest": "npm run lint",
@@ -58,10 +58,11 @@
   },
   "files": [
     "build/adonis-typings",
-    "build/src",
     "build/providers",
     "build/templates",
-    "build/instructions.md"
+    "build/instructions.md",
+    "build/index.d.ts",
+    "build/index.js"
   ],
   "dependencies": {
     "@inspector-apm/inspector-nodejs": "^1.9.10"
@@ -78,7 +79,10 @@
     "templates": {
       "basePath": "./build/templates",
       "config": [
-        "inspector.txt"
+        {
+          "src": "inspector.txt",
+          "dest": "inspector"
+        }
       ]
     }
   },
