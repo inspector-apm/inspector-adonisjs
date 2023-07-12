@@ -1,4 +1,5 @@
 import {ApplicationContract} from "@ioc:Adonis/Core/Application";
+import Inspector from "@inspector-apm/inspector-nodejs";
 
 export default class InspectorProvider {
     public static needsApplication = true
@@ -10,12 +11,12 @@ export default class InspectorProvider {
             const config = this.app.container.resolveBinding('Adonis/Core/Config').get('inspector.inspectorConfig')
 
             // todo: add other configuration parameters
-            return {
-                ...require('@inspector-apm/inspector-nodejs')({
-                    ingestionKey: config.ingestionKey
-                })
-            }
+            return new Inspector({
+                ingestionKey: config.ingestionKey
+            })
         })
+
+        this.app.container.alias('Adonis/Addons/Inspector', 'Inspector')
 
         this.app.container.singleton('Adonis/Addons/Inspector/Middleware', () => {
             return require('../src/Middleware/InspectorMiddleware')

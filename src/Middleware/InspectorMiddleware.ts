@@ -1,5 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Inspector from "@ioc:Inspector";
+import Inspector from "@ioc:Adonis/Addons/Inspector";
 import {inject} from "@adonisjs/fold";
 import {ApplicationContract} from "@ioc:Adonis/Core/Application";
 
