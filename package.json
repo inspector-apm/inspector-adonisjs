@@ -1,6 +1,6 @@
 {
   "name": "@inspector-apm/inspector-adonisjs",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Code Execution Monitoring for Adonisjs applications.",
   "main": "build/providers/InspectorProvider.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "test": "node -r @adonisjs/require-ts/build/register bin/test.ts",
     "clean": "del-cli build",
     "compile": "npm run lint && npm run clean && tsc && npm run copyfiles",
-    "copyfiles": "cp templates/inspector.txt build/templates && cp instructions.md build",
+    "copyfiles": "cp templates/inspector.txt build/templates/inspector.txt && cp instructions.md build",
     "build": "npm run compile",
     "prepublishOnly": "npm run build",
     "lint": "eslint . --ext=.ts"
