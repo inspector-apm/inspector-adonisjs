@@ -8,7 +8,8 @@
     "pretest": "npm run lint",
     "test": "node -r @adonisjs/require-ts/build/register bin/test.ts",
     "clean": "del-cli build",
-    "compile": "npm run lint && npm run clean && tsc",
+    "compile": "npm run lint && npm run clean && tsc && npm run copyfiles",
+    "copyfiles": "copyfiles \"templates/**/*.txt\" \"instructions.md\" build",
     "build": "npm run compile",
     "prepublishOnly": "npm run build"
   },
@@ -16,20 +17,23 @@
     "type": "git",
     "url": "git+https://github.com/inspector-apm/inspector-adonisjs.git"
   },
-  "author": "",
+  "keywords": [
+    "Adonis",
+    "5",
+    "adonis-inspector"
+  ],
+  "author": "Valerio Barbera",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/inspector-apm/inspector-adonisjs/issues"
   },
   "homepage": "https://github.com/inspector-apm/inspector-adonisjs#readme",
+  "types": "build/adonis-typings/index.d.ts",
+  "typings": "build/adonis-typings/index.d.ts",
   "peerDependencies": {
-    "@adonisjs/core": "^5.1.0",
-    "@adonisjs/session": "^6.0.0"
+    "@adonisjs/core": "^5.1.0"
   },
   "peerDependenciesMeta": {
-    "@adonisjs/session": {
-      "optional": true
-    }
   },
   "devDependencies": {
     "@adonisjs/core": "^5.1.0",
@@ -38,6 +42,10 @@
     "@adonisjs/session": "^6.0.0",
     "@types/node": "^20.3.2",
     "del-cli": "^5.0.0",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-adonis": "^2.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "mrm": "^4.1.14",
     "typescript": "^5.1.3"
   },
@@ -49,19 +57,23 @@
     "probotApps": []
   },
   "files": [
+    "build/adonis-typings",
     "build/src",
-    "build/index.d.ts",
-    "build/index.js"
+    "build/providers",
+    "build/templates",
+    "build/instructions.md"
   ],
   "dependencies": {
     "@inspector-apm/inspector-nodejs": "^1.9.10"
   },
   "adonisjs": {
+    "instructionsMd": "./build/instructions.md",
     "types": "@inspector-apm/inspector-adonisjs",
     "providers": [
       "@inspector-apm/inspector-adonisjs"
     ],
     "templates": {
+      "basePath": "./build/templates",
       "config": [
         "inspector.txt"
       ]

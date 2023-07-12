@@ -9,6 +9,7 @@ export default class InspectorProvider {
         this.app.container.singleton('Adonis/Addons/Inspector', () => {
             const config = this.app.container.resolveBinding('Adonis/Core/Config').get('inspector.inspectorConfig')
 
+            // todo: add other configuration parameters
             return {
                 ...require('@inspector-apm/inspector-nodejs')({
                     ingestionKey: config.ingestionKey
