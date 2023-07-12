@@ -1,5 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Inspector from "@ioc:Adonis/Addons/Inspector";
+//import Inspector from "@ioc:Adonis/Addons/Inspector";
 import {inject} from "@adonisjs/fold";
 import {ApplicationContract} from "@ioc:Adonis/Core/Application";
 
@@ -10,6 +10,8 @@ export default class InspectorMiddleware {
     constructor(protected app: ApplicationContract) {}
 
     public async handle({request, response}: HttpContextContract, next: () => Promise<void>) {
+        const { default: Inspector } = await import('@ioc:Adonis/Addons/Inspector')
+
         // Support exclude_path from configuration file
         if (!this.config.excludeUrls.includes(request.url())) {
             await next()
