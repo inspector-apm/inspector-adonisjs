@@ -1,4 +1,4 @@
-import Env from '@ioc:Adonis/Core/Env'
+import ENV from '@ioc:Adonis/Core/Env'
 import { InspectorConfig } from "@ioc:Adonis/Addons/Inspector"
 
 export const inspectorConfig: InspectorConfig = {
