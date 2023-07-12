@@ -17,7 +17,7 @@ export default class InspectorProvider {
         })
     }
 
-    public boot(Inspector) {
+    public boot() {
         const config = this.app.container.resolveBinding('Adonis/Core/Config').get('inspector.inspectorConfig')
 
         // todo: add other configuration parameters
